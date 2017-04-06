@@ -83,7 +83,7 @@
   replace:
     dest: /etc/tomcat8/server.xml
     regexp: 'redirectPort="\d*"'
-    replace: 'refirectPort="{{ tomcat_default_port_ssl }}"'
+    replace: 'redirectPort="{{ tomcat_default_port_ssl }}"'
   notify: "{{ 'Restart tomcat'  if ansible_virtualization_type != 'docker' else 'Restart tomcat in docker' }}"
   tags: tomcat
 
