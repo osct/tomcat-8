@@ -114,7 +114,7 @@
     block: |
         <Connector port="{{ tomcat_default_port_ssl }}" protocol="org.apache.coyote.http11.Http11Nio2Protocol"
                                          maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
-                                         clientAuth="false" sslProtocol="TLS" compression="on"
+                                         clientAuth="false" sslProtocol="TLS" compression="on" socket.txBufSize="2000000"
                                          keystoreFile="{{ tomcat_keystore }}" keyAlias="{{ tomcat_keystore_cert_alias }}"
                                          keyPass="{{ tomcat_keystore_passphrase }}"/>
   notify: "{{ 'Restart tomcat'  if ansible_virtualization_type != 'docker' else 'Restart tomcat in docker' }}"
